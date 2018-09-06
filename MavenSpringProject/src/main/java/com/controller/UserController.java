@@ -28,15 +28,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/validate",method = RequestMethod.GET)
-    public ModelAndView checkUser(){
+    public ModelAndView validateUser(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("userfromserver", new User());
+        modelAndView.addObject("userFormService", new User());
         modelAndView.setViewName("checkUser");
         return modelAndView;
     }
 
     @RequestMapping(value = "/checker",method = RequestMethod.POST)
-    public @ResponseBody String checkUser(@ModelAttribute("userfromserver") User user){
+    public @ResponseBody String checkUser(@ModelAttribute("userFormService") User user){
         if("admin".equals(user.getName())&&"admin".equals(user.getPassword())){
             return  "Valid";
         }
